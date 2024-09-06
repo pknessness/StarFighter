@@ -33,6 +33,12 @@ extern "C" {
 
 //     return 0;
 // }
+const int pixelScale = 20;
+
+void drawScaledPixel(int posX, int posY, Color color){
+    // DrawPixel(0*posX)
+    DrawRectangle(0 * posX, 0 * posY, pixelScale - 1, pixelScale - 1, color);
+}
 
 int main() {
     const int screenWidth = 800;
@@ -42,7 +48,8 @@ int main() {
     while (!WindowShouldClose()) {
         BeginDrawing();
         ClearBackground(RAYWHITE);
-        DrawText("It works!", 20, 20, 20, BLACK);
+        // DrawText("It works!", 20, 20, 20, BLACK);
+        drawScaledPixel(0,0,(Color){0x76,0x26,0x38,0x77});
         EndDrawing();
     }
     CloseWindow();

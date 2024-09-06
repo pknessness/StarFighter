@@ -7,34 +7,34 @@
       {
         "name": "Run Main",
         "color": "green",
-        "command": "./main.exe"
+        "command": "./out.exe"
       },
+      // {
+      //   "name": "Build Main",
+      //   "color": "#8F096F",
+      //   "command": "g++.exe -Wall -Wextra -g3 main.cpp -o main.exe"
+      // },
+      // {
+      //   "name": "Build SDL",
+      //   "color": "#8F096F",
+      //   "command": "g++ 01_hello_SDL.cpp sdl_32\\lib\\libSDL2_test.a sdl_32\\lib\\libSDL2.a sdl_32\\lib\\libSDL2main.a -Lsdl_32\\lib sdl_32\\bin\\SDL2 -w -lmingw32 -lSDL2main -lSDL2 -mwindows -o 01_hello_SDL"
+      // },
+      // {
+      //   "name": "Build Raylib",
+      //   "color": "#FFFFFF",
+      //   "command": "gcc -o test.exe main.c -Iraylib5\\include raylib5\\lib\\libraylib.a -lopengl32 -lgdi32 -lwinmm"
+      // },
+      // {
+      //   "name": "Build Main",
+      //   "color": "#FFFFFF",
+      //   "command": "gcc -c -o raylib.o rayz.c -Iraylib5\\include raylib5\\lib\\libraylib.a -lopengl32 -lgdi32 -lwinmm",
+      //   "extraCommands": [
+      //     "g++ -c -o wtf.o wtf.cpp",
+      //     "g++ -o yourprogram wtf.o raylib.o"
+      //   ]
+      // },
       {
         "name": "Build Main",
-        "color": "#8F096F",
-        "command": "g++.exe -Wall -Wextra -g3 main.cpp -o main.exe"
-      },
-      {
-        "name": "Build SDL",
-        "color": "#8F096F",
-        "command": "g++ 01_hello_SDL.cpp sdl_32\\lib\\libSDL2_test.a sdl_32\\lib\\libSDL2.a sdl_32\\lib\\libSDL2main.a -Lsdl_32\\lib sdl_32\\bin\\SDL2 -w -lmingw32 -lSDL2main -lSDL2 -mwindows -o 01_hello_SDL"
-      },
-      {
-        "name": "Build Raylib",
-        "color": "#FFFFFF",
-        "command": "gcc -o test.exe main.c -Iraylib5\\include raylib5\\lib\\libraylib.a -lopengl32 -lgdi32 -lwinmm"
-      },
-      {
-        "name": "Build Raylib CPP",
-        "color": "#FFFFFF",
-        "command": "gcc -c -o raylib.o rayz.c -Iraylib5\\include raylib5\\lib\\libraylib.a -lopengl32 -lgdi32 -lwinmm",
-        "extraCommands": [
-          "g++ -c -o wtf.o wtf.cpp",
-          "g++ -o yourprogram wtf.o raylib.o"
-        ]
-      },
-      {
-        "name": "Build Raylib CPP-",
         "color": "#FFFFFF",
         "command": "g++ -o out.exe ray_main.cpp -Iraylib5\\include raylib5\\lib\\libraylib.a -lopengl32 -lgdi32 -lwinmm"
       },
