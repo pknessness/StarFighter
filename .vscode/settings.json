@@ -1,0 +1,99 @@
+{
+  "actionButtons": {
+    "reloadButton": "♻️",
+    "defaultColor": "#ff0034",
+    "loadNpmCommands": false,
+    "commands": [
+      {
+        "name": "Run Main",
+        "color": "green",
+        "command": "./main.exe"
+      },
+      {
+        "name": "Build Main",
+        "color": "#8F096F",
+        "command": "g++.exe -Wall -Wextra -g3 main.cpp -o main.exe"
+      },
+      {
+        "name": "🪟 Split editor",
+        "color": "orange",
+        "useVsCodeApi": true,
+        "command": "workbench.action.splitEditor"
+        },
+        {
+            "name": "Flash",
+            "terminalName": "ESP-IDF 4.4 CMD",
+            "color": "red",
+            "useVsCodeApi": false,
+            "ignoreCwd": true,
+            "ignoreClear": true,
+            "command": "idf.py -p ${port} flash",
+            "extraCommands": [
+                "idf.py -p ${port} monitor"
+            ]
+        }
+        ],
+        "customVars": {
+        "port": "COM4"
+        }
+    },
+    "C_Cpp_Runner.cCompilerPath": "gcc",
+    "C_Cpp_Runner.cppCompilerPath": "g++",
+    "C_Cpp_Runner.debuggerPath": "gdb",
+    "C_Cpp_Runner.cStandard": "",
+    "C_Cpp_Runner.cppStandard": "",
+    "C_Cpp_Runner.msvcBatchPath": "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Auxiliary/Build/vcvarsall.bat",
+    "C_Cpp_Runner.useMsvc": false,
+    "C_Cpp_Runner.warnings": [
+    "-Wall",
+    "-Wextra",
+    "-Wpedantic",
+    "-Wshadow",
+    "-Wformat=2",
+    "-Wcast-align",
+    "-Wconversion",
+    "-Wsign-conversion",
+    "-Wnull-dereference"
+    ],
+    "C_Cpp_Runner.msvcWarnings": [
+    "/W4",
+    "/permissive-",
+    "/w14242",
+    "/w14287",
+    "/w14296",
+    "/w14311",
+    "/w14826",
+    "/w44062",
+    "/w44242",
+    "/w14905",
+    "/w14906",
+    "/w14263",
+    "/w44265",
+    "/w14928"
+    ],
+    "C_Cpp_Runner.enableWarnings": true,
+    "C_Cpp_Runner.warningsAsError": false,
+    "C_Cpp_Runner.compilerArgs": ["-lopengl32 "],
+    "C_Cpp_Runner.linkerArgs": ["glfw_3_4/lib-mingw-w64/libglfw3.a", "glfw_3_4/lib-mingw-w64/libglfw3dll.a", "glfw_3_4/lib-mingw-w64/glfw3.dll","-lgdi32","-lopengl32"],
+    "C_Cpp_Runner.includePaths": ["C:\\msys64\\ucrt64\\bin", "glfw_3_4/lib-mingw-w64"],
+    "C_Cpp_Runner.includeSearch": [
+    "*",
+    "**/*"
+    ],
+    "C_Cpp_Runner.excludeSearch": [
+    "**/build",
+    "**/build/**",
+    "**/.*",
+    "**/.*/**",
+    "**/.vscode",
+    "**/.vscode/**",
+    "C:/iverilog/**"
+    ],
+    "C_Cpp_Runner.useAddressSanitizer": false,
+    "C_Cpp_Runner.useUndefinedSanitizer": false,
+    "C_Cpp_Runner.useLeakSanitizer": false,
+    "C_Cpp_Runner.showCompilationTime": false,
+    "C_Cpp_Runner.useLinkTimeOptimization": false,
+    "C_Cpp_Runner.msvcSecureNoWarnings": false,
+    "C_Cpp.default.compilerPath": ""
+}
