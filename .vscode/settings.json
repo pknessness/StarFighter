@@ -15,36 +15,60 @@
         "command": "g++.exe -Wall -Wextra -g3 main.cpp -o main.exe"
       },
       {
+        "name": "Build SDL",
+        "color": "#8F096F",
+        "command": "g++ 01_hello_SDL.cpp sdl_32\\lib\\libSDL2_test.a sdl_32\\lib\\libSDL2.a sdl_32\\lib\\libSDL2main.a -Lsdl_32\\lib sdl_32\\bin\\SDL2 -w -lmingw32 -lSDL2main -lSDL2 -mwindows -o 01_hello_SDL"
+      },
+      {
+        "name": "Build Raylib",
+        "color": "#FFFFFF",
+        "command": "gcc -o test.exe main.c -Iraylib5\\include raylib5\\lib\\libraylib.a -lopengl32 -lgdi32 -lwinmm"
+      },
+      {
+        "name": "Build Raylib CPP",
+        "color": "#FFFFFF",
+        "command": "gcc -c -o raylib.o rayz.c -Iraylib5\\include raylib5\\lib\\libraylib.a -lopengl32 -lgdi32 -lwinmm",
+        "extraCommands": [
+          "g++ -c -o wtf.o wtf.cpp",
+          "g++ -o yourprogram wtf.o raylib.o"
+        ]
+      },
+      {
+        "name": "Build Raylib CPP-",
+        "color": "#FFFFFF",
+        "command": "g++ -o out.exe ray_main.cpp -Iraylib5\\include raylib5\\lib\\libraylib.a -lopengl32 -lgdi32 -lwinmm"
+      },
+      {
         "name": "🪟 Split editor",
         "color": "orange",
         "useVsCodeApi": true,
         "command": "workbench.action.splitEditor"
-        },
-        {
-            "name": "Flash",
-            "terminalName": "ESP-IDF 4.4 CMD",
-            "color": "red",
-            "useVsCodeApi": false,
-            "ignoreCwd": true,
-            "ignoreClear": true,
-            "command": "idf.py -p ${port} flash",
-            "extraCommands": [
-                "idf.py -p ${port} monitor"
-            ]
-        }
-        ],
-        "customVars": {
-        "port": "COM4"
-        }
-    },
-    "C_Cpp_Runner.cCompilerPath": "gcc",
-    "C_Cpp_Runner.cppCompilerPath": "g++",
-    "C_Cpp_Runner.debuggerPath": "gdb",
-    "C_Cpp_Runner.cStandard": "",
-    "C_Cpp_Runner.cppStandard": "",
-    "C_Cpp_Runner.msvcBatchPath": "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Auxiliary/Build/vcvarsall.bat",
-    "C_Cpp_Runner.useMsvc": false,
-    "C_Cpp_Runner.warnings": [
+      },
+      {
+        "name": "Flash",
+        "terminalName": "ESP-IDF 4.4 CMD",
+        "color": "red",
+        "useVsCodeApi": false,
+        "ignoreCwd": true,
+        "ignoreClear": true,
+        "command": "idf.py -p ${port} flash",
+        "extraCommands": [
+          "idf.py -p ${port} monitor"
+        ]
+      }
+    ],
+    "customVars": {
+      "port": "COM4"
+    }
+  },
+  "C_Cpp_Runner.cCompilerPath": "gcc",
+  "C_Cpp_Runner.cppCompilerPath": "g++",
+  "C_Cpp_Runner.debuggerPath": "gdb",
+  "C_Cpp_Runner.cStandard": "",
+  "C_Cpp_Runner.cppStandard": "",
+  "C_Cpp_Runner.msvcBatchPath": "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Auxiliary/Build/vcvarsall.bat",
+  "C_Cpp_Runner.useMsvc": false,
+  "C_Cpp_Runner.warnings": [
     "-Wall",
     "-Wextra",
     "-Wpedantic",
@@ -54,8 +78,8 @@
     "-Wconversion",
     "-Wsign-conversion",
     "-Wnull-dereference"
-    ],
-    "C_Cpp_Runner.msvcWarnings": [
+  ],
+  "C_Cpp_Runner.msvcWarnings": [
     "/W4",
     "/permissive-",
     "/w14242",
@@ -70,17 +94,28 @@
     "/w14263",
     "/w44265",
     "/w14928"
-    ],
-    "C_Cpp_Runner.enableWarnings": true,
-    "C_Cpp_Runner.warningsAsError": false,
-    "C_Cpp_Runner.compilerArgs": ["-lopengl32 "],
-    "C_Cpp_Runner.linkerArgs": ["glfw_3_4/lib-mingw-w64/libglfw3.a", "glfw_3_4/lib-mingw-w64/libglfw3dll.a", "glfw_3_4/lib-mingw-w64/glfw3.dll","-lgdi32","-lopengl32"],
-    "C_Cpp_Runner.includePaths": ["C:\\msys64\\ucrt64\\bin", "glfw_3_4/lib-mingw-w64"],
-    "C_Cpp_Runner.includeSearch": [
+  ],
+  "C_Cpp_Runner.enableWarnings": true,
+  "C_Cpp_Runner.warningsAsError": false,
+  "C_Cpp_Runner.compilerArgs": [
+    "-lopengl32"
+  ],
+  "C_Cpp_Runner.linkerArgs": [
+    "glfw_3_4/lib-mingw-w64/libglfw3.a",
+    "glfw_3_4/lib-mingw-w64/libglfw3dll.a",
+    "glfw_3_4/lib-mingw-w64/glfw3.dll",
+    "-lgdi32",
+    "-lopengl32"
+  ],
+  "C_Cpp_Runner.includePaths": [
+    "C:\\msys64\\ucrt64\\bin",
+    "glfw_3_4/lib-mingw-w64"
+  ],
+  "C_Cpp_Runner.includeSearch": [
     "*",
     "**/*"
-    ],
-    "C_Cpp_Runner.excludeSearch": [
+  ],
+  "C_Cpp_Runner.excludeSearch": [
     "**/build",
     "**/build/**",
     "**/.*",
@@ -88,12 +123,16 @@
     "**/.vscode",
     "**/.vscode/**",
     "C:/iverilog/**"
-    ],
-    "C_Cpp_Runner.useAddressSanitizer": false,
-    "C_Cpp_Runner.useUndefinedSanitizer": false,
-    "C_Cpp_Runner.useLeakSanitizer": false,
-    "C_Cpp_Runner.showCompilationTime": false,
-    "C_Cpp_Runner.useLinkTimeOptimization": false,
-    "C_Cpp_Runner.msvcSecureNoWarnings": false,
-    "C_Cpp.default.compilerPath": ""
+  ],
+  "C_Cpp_Runner.useAddressSanitizer": false,
+  "C_Cpp_Runner.useUndefinedSanitizer": false,
+  "C_Cpp_Runner.useLeakSanitizer": false,
+  "C_Cpp_Runner.showCompilationTime": false,
+  "C_Cpp_Runner.useLinkTimeOptimization": false,
+  "C_Cpp_Runner.msvcSecureNoWarnings": false,
+  "C_Cpp.default.compilerPath": "",
+  "files.associations": {
+    "raylib.h": "c",
+    "rayz.c": "cpp"
+  }
 }
