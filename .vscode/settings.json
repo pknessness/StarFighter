@@ -9,30 +9,6 @@
         "color": "green",
         "command": "./out.exe"
       },
-      // {
-      //   "name": "Build Main",
-      //   "color": "#8F096F",
-      //   "command": "g++.exe -Wall -Wextra -g3 main.cpp -o main.exe"
-      // },
-      // {
-      //   "name": "Build SDL",
-      //   "color": "#8F096F",
-      //   "command": "g++ 01_hello_SDL.cpp sdl_32\\lib\\libSDL2_test.a sdl_32\\lib\\libSDL2.a sdl_32\\lib\\libSDL2main.a -Lsdl_32\\lib sdl_32\\bin\\SDL2 -w -lmingw32 -lSDL2main -lSDL2 -mwindows -o 01_hello_SDL"
-      // },
-      // {
-      //   "name": "Build Raylib",
-      //   "color": "#FFFFFF",
-      //   "command": "gcc -o test.exe main.c -Iraylib5\\include raylib5\\lib\\libraylib.a -lopengl32 -lgdi32 -lwinmm"
-      // },
-      // {
-      //   "name": "Build Main",
-      //   "color": "#FFFFFF",
-      //   "command": "gcc -c -o raylib.o rayz.c -Iraylib5\\include raylib5\\lib\\libraylib.a -lopengl32 -lgdi32 -lwinmm",
-      //   "extraCommands": [
-      //     "g++ -c -o wtf.o wtf.cpp",
-      //     "g++ -o yourprogram wtf.o raylib.o"
-      //   ]
-      // },
       {
         "name": "Build Main",
         "color": "#FFFFFF",
@@ -98,14 +74,15 @@
   "C_Cpp_Runner.enableWarnings": true,
   "C_Cpp_Runner.warningsAsError": false,
   "C_Cpp_Runner.compilerArgs": [
-    "-lopengl32"
+    "-lopengl32",
+    "-lgdi32",
+    "-lwinmm"
   ],
   "C_Cpp_Runner.linkerArgs": [
-    "glfw_3_4/lib-mingw-w64/libglfw3.a",
-    "glfw_3_4/lib-mingw-w64/libglfw3dll.a",
-    "glfw_3_4/lib-mingw-w64/glfw3.dll",
+    "raylib5\\lib\\libraylib.a",
     "-lgdi32",
-    "-lopengl32"
+    "-lopengl32",
+    "-lwinmm"
   ],
   "C_Cpp_Runner.includePaths": [
     "C:\\msys64\\ucrt64\\bin",
@@ -113,6 +90,7 @@
   ],
   "C_Cpp_Runner.includeSearch": [
     "*",
+    "raylib5\\include",
     "**/*"
   ],
   "C_Cpp_Runner.excludeSearch": [
@@ -122,7 +100,7 @@
     "**/.*/**",
     "**/.vscode",
     "**/.vscode/**",
-    "C:/iverilog/**"
+    "C:/iverilog/bin/**"
   ],
   "C_Cpp_Runner.useAddressSanitizer": false,
   "C_Cpp_Runner.useUndefinedSanitizer": false,
@@ -133,6 +111,66 @@
   "C_Cpp.default.compilerPath": "",
   "files.associations": {
     "raylib.h": "c",
-    "rayz.c": "cpp"
-  }
+    "rayz.c": "cpp",
+    "random": "cpp",
+    "string": "cpp",
+    "array": "cpp",
+    "atomic": "cpp",
+    "bit": "cpp",
+    "*.tcc": "cpp",
+    "cctype": "cpp",
+    "charconv": "cpp",
+    "chrono": "cpp",
+    "clocale": "cpp",
+    "cmath": "cpp",
+    "compare": "cpp",
+    "concepts": "cpp",
+    "cstdarg": "cpp",
+    "cstddef": "cpp",
+    "cstdint": "cpp",
+    "cstdio": "cpp",
+    "cstdlib": "cpp",
+    "ctime": "cpp",
+    "cwchar": "cpp",
+    "cwctype": "cpp",
+    "deque": "cpp",
+    "list": "cpp",
+    "unordered_map": "cpp",
+    "vector": "cpp",
+    "exception": "cpp",
+    "algorithm": "cpp",
+    "functional": "cpp",
+    "iterator": "cpp",
+    "memory": "cpp",
+    "memory_resource": "cpp",
+    "numeric": "cpp",
+    "optional": "cpp",
+    "ratio": "cpp",
+    "string_view": "cpp",
+    "system_error": "cpp",
+    "tuple": "cpp",
+    "type_traits": "cpp",
+    "utility": "cpp",
+    "format": "cpp",
+    "initializer_list": "cpp",
+    "iomanip": "cpp",
+    "iosfwd": "cpp",
+    "iostream": "cpp",
+    "istream": "cpp",
+    "limits": "cpp",
+    "new": "cpp",
+    "numbers": "cpp",
+    "ostream": "cpp",
+    "semaphore": "cpp",
+    "span": "cpp",
+    "sstream": "cpp",
+    "stdexcept": "cpp",
+    "stop_token": "cpp",
+    "streambuf": "cpp",
+    "thread": "cpp",
+    "cinttypes": "cpp",
+    "typeinfo": "cpp",
+    "variant": "cpp"
+  },
+  "C_Cpp.default.intelliSenseMode": "windows-gcc-x64"
 }
