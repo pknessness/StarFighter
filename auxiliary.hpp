@@ -31,6 +31,7 @@ float randomSeeded(){
     long val = (countSeed*(countSeed*2140 + 21390) * (countSeed * 2139021 + 213908))>>8 & 0xFFFFFF;
     // printf("{%f %d}\n",(float)val/0xFFFFFF, countSeed);
     countSeed ++;
+    // countSeed = val;
     return (float)val/0xFFFFFF;
 }
 

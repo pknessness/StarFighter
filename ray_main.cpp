@@ -62,6 +62,8 @@ int screenHeight = 600;
 int randSeed = 0;
 
 int maxBounces = 2;
+int raySplits = 2;
+int numRays = 1;
 
 struct hittable{
     virtual ~hittable() = default;
@@ -256,48 +258,39 @@ vector3 rayColor(const ray& r){
     // return (Color){124,43,96,255};
     // return (Color){r.dir.x,r.dir.y,r.dir.z,255};
     // printf("objects: %d\n",ObjList::size);
-    vector3 light = {0,0,0};
-    vector3 color = {1,1,1};
+    vector3 lightAccumulation = {0,0,0};
     bool hitted = false;
 
-    ray project = r;
-    for(int i = 0; i < maxBounces; i ++){
-        Hit h = rayCollide(project);
-        if(h.hit){
-            hitted = true;
-            // if(h.mat.emissivity < 1){
-            // printf("p:");
-            // project.origin.print();
-            // printf("d:");
-            // project.dir.print();
+    // ray project = r;
+    Hit h = rayCollide(r);
 
-            project.origin = h.hitPoint;
-            project.dir = randomHemisphere(h.hitNormal);
+    if(h.hit){
+        hitted = true;
+        for(int g = 0; g < raySplits; g++){
+            ray project = {h.hitPoint, randomHemisphereSeeded(h.hitNormal)};
+            vector3 light = {0,0,0};
+            vector3 color = {1,1,1};
+            for(int i = 0; i < maxBounces; i ++){
+                Hit x = rayCollide(project);
+                if(x.hit){
+                    hitted = true;
             
-            // printf("hP:");
-            // project.origin.print();
-            // printf("d:");
-            // project.dir.print();
-            // printf("c:");
-            // h.mat.color.print();
-            // }
+                    project.origin = x.hitPoint;
+                    project.dir = randomHemisphereSeeded(x.hitNormal);
+                
+                    vector3 emmited = x.mat.color * x.mat.emissivity;
+                    light += emmited * color;
+                    color *= x.mat.color;
 
-            vector3 emmited = h.mat.color * h.mat.emissivity;
-            light += emmited * color;
-            color *= h.mat.color;
-            // printf("l:");
-            // light.print();
-            // printf("e:");
-            // emmited.println();
-            // printf("\n");
-            // Color col = color();
-            // ((h.hitNormal + vector3{1.0,1.0,1.0})/2).println();
-            // return (h.hitNormal + vector3{1.0,1.0,1.0})/2;
-            // return color;
+                    // ((h.hitNormal + vector3{1.0,1.0,1.0})/2).println();
+                    // return (h.hitNormal + vector3{1.0,1.0,1.0})/2;
+                }else{
+                    break;
+                }
+            }
+            lightAccumulation += light;
         }
-    }
-    if(hitted){
-        return light;
+        return lightAccumulation/raySplits;
     }
     return skybox(r);
 }
@@ -327,7 +320,7 @@ int main() {
 
     material red = {{1.0,0.2,0.1},0.5,0};
     material blue = {{0.2,0.1,1.0},0.5,0};
-    material sun = {{1.0,1.0,1.0},0,1};
+    material sun = {{1.0,1.0,1.0},0,5};
 
     //CAMERA ORIENTATION STUFF
     // location camLoc = ;
@@ -340,7 +333,7 @@ int main() {
 
     // createSphere({0,1,-2}, 0.5, blue);
 
-    createSphere({0,2,0}, 1, sun);
+    createSphere({0,2,1}, 1, sun);
 
     // spheres[0].pos = {0,0,-1};
     // spheres[0].radius = 0.5;
@@ -359,9 +352,15 @@ int main() {
         // DrawText("It works!", 20, 20, 20, BLACK);
         for(int i = 0; i < (screenWidth/pixelScale); i ++){
             for(int j = 0; j < (screenHeight/pixelScale); j ++){
-
+                // countSeed = i * screenWidth/pixelScale + j;
                 cam.recalculate();
-                Color pixelColor = color(rayColor(cam.generateRay(i,j)));
+                vector3 accumulatedColor = {0,0,0};
+                for(int clor = 0; clor < numRays; clor ++){
+                    accumulatedColor += rayColor(cam.generateRay(i,j));
+                    // accumulatedColor.print();
+                }
+                // printf("\n");
+                Color pixelColor = color(accumulatedColor/numRays);
                 drawScaledPixel(i,j,pixelColor);
 
                 float zoom = 0.0001;
